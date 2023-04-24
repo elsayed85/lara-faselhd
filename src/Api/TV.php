@@ -26,7 +26,7 @@ class TV
         ]);
     }
 
-    public function get($id)
+    public function find($id)
     {
         return $this->api->get("Content/GetContent", [
             "ContentId" => $id

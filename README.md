@@ -1,33 +1,11 @@
 # FaselHd Api
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/elsayed85/lara-faselhd.svg?style=flat-square)](https://packagist.org/packages/elsayed85/lara-faselhd)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/elsayed85/lara-faselhd/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/elsayed85/lara-faselhd/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/elsayed85/lara-faselhd/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/elsayed85/lara-faselhd/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/elsayed85/lara-faselhd.svg?style=flat-square)](https://packagist.org/packages/elsayed85/lara-faselhd)
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/lara-faselhd.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/lara-faselhd)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
-
 ## Installation
 
 You can install the package via composer:
 
 ```bash
 composer require elsayed85/lara-faselhd
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="lara-faselhd-migrations"
-php artisan migrate
 ```
 
 You can publish the config file with:
@@ -40,27 +18,162 @@ This is the contents of the published config file:
 
 ```php
 return [
+    "host" => "https://netcore.faselhd.pro/api/v1.0/",
+    "token" => env("FASLEHD_TOKEN", $token),
 ];
 ```
 
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="lara-faselhd-views"
-```
 
 ## Usage
 
-```php
-$faselHd = new Elsayed85\FaselHd();
-echo $faselHd->echoPhrase('Hello, Elsayed85!');
+### Movies
+
+#### Get All Movies
+
+``` php
+use Elsayed85\FaselHd\FaselHd;
+
+$movies = FaselHd::movies()->all();
 ```
 
-## Testing
+#### Get Movie By Id
 
-```bash
-composer test
+``` php
+use Elsayed85\FaselHd\FaselHd;
+
+$movie = FaselHd::movies()->find($id);
 ```
+
+
+#### Get Recommended Movies By Id
+
+``` php
+use Elsayed85\FaselHd\FaselHd;
+
+$recommended_movies = FaselHd::movies()->recommended($id);
+```
+
+#### Download Movie By Id
+
+``` php
+use Elsayed85\FaselHd\FaselHd;
+
+$download_link = FaselHd::movies()->download($vid);
+```
+
+#### Watch Movie By Id
+
+``` php
+use Elsayed85\FaselHd\FaselHd;
+
+$watch_link = FaselHd::movies()->watch($vid);
+```
+
+#### Movie Comments By Id
+
+``` php
+use Elsayed85\FaselHd\FaselHd;
+
+$comments = FaselHd::movies()->comments($id);
+```
+
+<hr>
+
+### Series
+
+#### Get All Series
+
+``` php
+use Elsayed85\FaselHd\FaselHd;
+
+$series = FaselHd::series()->all();
+```
+
+#### Get Series By Id
+
+``` php
+use Elsayed85\FaselHd\FaselHd;
+
+$serie = FaselHd::series()->find($id);
+```
+
+
+#### Get Recommended Series By Id
+
+``` php
+use Elsayed85\FaselHd\FaselHd;
+
+$recommended_series = FaselHd::series()->recommended($id);
+```
+
+#### Download Series By Id
+
+``` php
+use Elsayed85\FaselHd\FaselHd;
+
+$download_link = FaselHd::series()->download($vid);
+```
+
+#### Watch Series By Id
+
+``` php
+use Elsayed85\FaselHd\FaselHd;
+
+$watch_link = FaselHd::series()->watch($vid);
+```
+
+#### Series Comments By Id
+
+``` php
+use Elsayed85\FaselHd\FaselHd;
+
+$comments = FaselHd::series()->comments($id);
+```
+
+<hr>
+
+### Categories
+
+#### Get All Categories
+
+``` php
+use Elsayed85\FaselHd\FaselHd;
+
+$categories = FaselHd::categories()->all();
+```
+
+
+#### Get All Sub Categories
+
+``` php
+use Elsayed85\FaselHd\FaselHd;
+
+$sub_categories = FaselHd::categories()->subCategories($id);
+```
+
+#### Category content load
+
+``` php
+use Elsayed85\FaselHd\FaselHd;
+
+$content = FaselHd::categories()->load($id);
+```
+
+<hr>
+
+### Search
+
+#### Search 
+
+``` php
+use Elsayed85\FaselHd\FaselHd;
+
+$search = FaselHd::search()->query($query);
+```
+
+<hr>
+
+
 
 ## Changelog
 

@@ -25,7 +25,7 @@ class Category
         ]);
     }
 
-    public function get($category, $page = 1, $pageSize = 15)
+    public function load($category, $page = 1, $pageSize = 15)
     {
         return $this->api->post('Content/GetContents', [
             'data' => [

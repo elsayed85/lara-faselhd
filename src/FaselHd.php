@@ -32,4 +32,24 @@ class FaselHd
         $url = $this->host . $url;
         return Http::withToken($this->token)->delete($url, $params);
     }
+
+    public static function movies()
+    {
+        return new Api\Movie();
+    }
+
+    public static function series()
+    {
+        return new Api\TV();
+    }
+
+    public static function categories()
+    {
+        return new Api\Category();
+    }
+
+    public static function search()
+    {
+        return new Api\Search();
+    }
 }

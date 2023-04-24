@@ -13,7 +13,7 @@ class Search
         $this->api = new FaselHd();
     }
 
-    public function search($query, $page = 1, $pageSize = 15)
+    public function query($query, $page = 1, $pageSize = 15)
     {
         return $this->api->post('Content/ContentSearch', [
             'data' => [
